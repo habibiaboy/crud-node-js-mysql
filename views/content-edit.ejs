@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RT LOREM IPSUM</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header-logo">Warga Lorem Ipsum</a>
+    </header>
+    <div class="container">
+      <div class="item-form-wrapper">
+        <p class="form-label">Edit Warga sesuai data yang benar </p>
+        <form action="/update" method="post">
+          <label for="nomor rumah" class="label-edit">Nomor Rumah</label>
+          <input type="text" value="<%= item.NOMOR_RUMAH %>" name="itemNomorRumah" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"><br>
+          <label for="nama kk" class="label-edit">Nama Kepala Keluarga</label>
+          <input type="text" value="<%= item.NAMA_KEPALA_KELUARGA %>" name="itemNamaWarga" oninput="this.value = this.value.toUpperCase()"><br>
+          <label for="nik" class="label-edit">NIK</label>
+          <input type="text" value="<%= item.NIK %>" name="itemNik" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="16">
+          <input type="submit" value="Perbarui">
+        </form>
+      </div>
+      <a href="/content" class="cancel-button">Batal</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LIST Warga</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+</head>
+<body>
+  <header>
+    <a href="/" class="header-logo">Home</a>
+  </header>
+  <div class="container">
+    <div class="container-header">
+      <h1>Daftar Warga</h1>
+      <a href="/new" class="new-button">+ Tambahkan</a>
+    </div>
+    
+    <table class="table table-bordered" id="mytable">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">No.Rumah</th>
+          <th scope="col">Nama Kepala Keluarga</th>
+          <th scope="col">NIK</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <% items.forEach((item) => { %>
+      <tbody>
+        <tr>
+          <td><%= item.NOMOR_RUMAH %></td>
+          <td><%= item.NAMA_KEPALA_KELUARGA %></td>
+          <td><%= item.NIK %></td>
+          <td>
+            <a href="/edit/<%= item.NOMOR_RUMAH %>" class="btn btn-sm btn-info edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-value="<%= item.NOMOR_RUMAH %>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a href="/view/<%= item.NOMOR_RUMAH %>" class="btn btn-sm btn-primary"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      </tbody>
+      <% }) %>
+    </table>
+  </div>
+
+      <!-- Modal Delete Produk-->
+      <form id="add-row-form" action="/delete" method="post">
+         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                   
+                   <div class="modal-body">
+                        <strong>Anda yakin mau menghapus data ini?</strong>
+                   </div>
+
+                   <div class="modal-footer">
+                        <input type="hidden" name="nomor_rumah" class="form-control nomor_rumah2" required>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   </div>
+                    </div>
+            </div>
+         </div>
+      </form> 
+
+  
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"crossorigin="anonymous"></script>
+<script>
+
+    $(document).ready(function(){
+      $('#mytable').on('click','.delete',function(){
+        $('#DeleteModal').modal('show');
+        var nomor_rumah = $(this).attr('data-value');
+        // alert(nomor_rumah);
+        $('.nomor_rumah2').val(nomor_rumah);
+      });
+    });
+</script>
+</html>
