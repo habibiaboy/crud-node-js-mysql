@@ -12,7 +12,7 @@ Create a simple Crud using Node js, Jquery and Bootstrap 4.
 ## The conclusion of this material 
 ```
 On Jquery I learned : 
-Using Val on jquery for value changes, this is simpler and easier than using ES6 JavaScript
+Using Val on jquery for value changes, this is very simple and easier than using ES6 JavaScript
 ```
 
 ```
