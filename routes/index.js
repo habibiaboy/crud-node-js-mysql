@@ -76,7 +76,7 @@ router.get('/edit/:NOMOR_RUMAH', (req, res) => {
 
 /* POST for update data. */
 router.post('/update',(req, res) => {
-  let sql = "UPDATE KEL_UTAMA SET NAMA_KEPALA_KELUARGA='"+req.body.itemNamaWarga+"', NIK='"+req.body.itemNik+"' WHERE NOMOR_RUMAH="+req.body.itemNomorRumah;
+  let sql = `UPDATE KEL_UTAMA SET NAMA_KEPALA_KELUARGA='${req.body.itemNamaWarga}', NIK='${req.body.itemNik}' WHERE NOMOR_RUMAH=${req.body.itemNomorRumah}`;
   let query = connection.query(sql, (err, results) => {
     if(err) throw err;
     res.redirect('/content');
@@ -86,7 +86,7 @@ router.post('/update',(req, res) => {
 
 router.post('/delete',(req, res) => {
   console.log(req.body.nomor_rumah);
-  let sql = "DELETE FROM KEL_UTAMA WHERE NOMOR_RUMAH="+req.body.nomor_rumah+"";
+  let sql = `DELETE FROM KEL_UTAMA WHERE NOMOR_RUMAH=${req.body.nomor_rumah}`;
   let query = connection.query(sql, (err, results) => {
     if(err) throw err;
       res.redirect('/content');
